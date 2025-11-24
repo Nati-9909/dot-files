@@ -1,0 +1,222 @@
+{
+	"layer": "top",
+	"height": 30,
+	"spacing": 4,
+	"reload_style_on_change": true,
+	"margin-top": 3,
+	"margin-left": 10,
+	"margin-right": 10,
+	"margin-bottom": 0,
+	"modules-center": [
+		"tray",
+		"hyprland/workspaces",
+	],
+	"modules-left": [
+		"clock",
+		"wlr/taskbar",
+	],
+	"modules-right": [
+		"wireplumber",
+		"network",
+		"cpu",
+		"memory",
+		"battery",
+		"custom/power",
+	],
+	// Workspaces
+	"hyprland/workspaces": {
+		"on-scroll-up": "hyprctl dispatch workspace r-1",
+		"on-scroll-down": "hyprctl dispatch workspace r+1",
+		"on-click": "activate",
+		"active-only": false,
+		"all-outputs": true,
+		"format": "{}",
+		//"format-icons": {
+		//    "urgent": "",
+		//    "active": "<small></small>",
+		//    "default": ""
+		//},
+		"format-icons": {
+			"1": "1",
+			"2": "2",
+			"3": "3",
+			"4": "4",
+			"5": "5",
+			"6": "6",
+			"7": "7",
+			"8": "8",
+			"9": "9",
+			"10": "10",
+			"active": "<small></small>",
+			"default": "",
+		},
+		"persistent-workspaces": {
+			"*": 3
+		}
+	},
+	// Taskbar
+	"wlr/taskbar": {
+		"format": "{icon}",
+		"icon-size": 18,
+		"tooltip-format": "{title}",
+		"on-click": "activate",
+		"on-click-middle": "close",
+		"ignore-list": [
+			"kitty"
+		],
+		"app_ids-mapping": {
+			"firefoxdeveloperedition": "firefox-developer-edition"
+		},
+		"rewrite": {
+			"Firefox Web Browser": "Firefox",
+			"Foot Server": "Terminal"
+		}
+	},
+	"wireplumber": {
+		"format": "{icon} {volume}%",
+		"format-muted": "󰝟",
+		"format-icons": [
+			"󰕿",
+			"󰖀",
+			"󰕾"
+		],
+		"on-click": "pavucontrol",
+		"max-volume": 100,
+		"scroll-step": 1.0,
+	},
+	"tray": {
+		"spacing": 10,
+	},
+	"clock": {
+		"format": "󱑎  {:%I:%M}",
+		"format-alt": "   {:%A, %B %d %Y}",
+		"tooltip-format": "<tt><small>{calendar}</small></tt>",
+		"calendar": {
+			"mode": "month",
+			"mode-mon-col": 3,
+			"weeks-pos": "right",
+			"on-scroll": 1,
+			"on-click-right": "mode",
+			"format": {
+				"months": "<span color='#ffead3'><b>{}</b></span>",
+				"days": "<span color='#ecc6d9'><b>{}</b></span>",
+				"weeks": "<span color='#99ffdd'><b>W{}</b></span>",
+				"weekdays": "<span color='#ffcc66'><b>{}</b></span>",
+				"today": "<span color='#ff6699'><b><u>{}</u></b></span>",
+			},
+		},
+		"actions": {
+			"on-click-right": "mode",
+			"on-click-forward": "tz_up",
+			"on-click-backward": "tz_down",
+			"on-scroll-up": "shift_up",
+			"on-scroll-down": "shift_down",
+		},
+	},
+	"custom/clock": {
+		"format-alt": "󱑎  {:%I:%M}",
+		"format": "  {:%A, %B %d %Y}",
+		"tooltip-format": "<tt><small>{calendar}</small></tt>",
+		"calendar": {
+			"mode": "month",
+			"mode-mon-col": 3,
+			"weeks-pos": "right",
+			"on-scroll": 1,
+			"on-click-right": "mode",
+			"format": {
+				"months": "<span color='#ffead3'><b>{}</b></span>",
+				"days": "<span color='#ecc6d9'><b>{}</b></span>",
+				"weeks": "<span color='#99ffdd'><b>W{}</b></span>",
+				"weekdays": "<span color='#ffcc66'><b>{}</b></span>",
+				"today": "<span color='#ff6699'><b><u>{}</u></b></span>",
+			},
+		},
+		"actions": {
+			"on-click-right": "mode",
+			"on-click-forward": "tz_up",
+			"on-click-backward": "tz_down",
+			"on-scroll-up": "shift_up",
+			"on-scroll-down": "shift_down",
+		},
+	},
+	"cpu": {
+		"format": "   {usage}%",
+	},
+	"memory": {
+		"format": "\uefc5 {}%",
+		"tooltip-format": "󰍛 {used}/{total} GiB",
+	},
+	"temperature": {
+		//"thermal-zone": 2,
+		//"hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
+		"critical-threshold": 80,
+		//"format-critical": "{icon} {temperatureC}°C",
+		"format": "{icon} {temperatureC}°C",
+		"format-icons": [
+			"",
+			"",
+			""
+		],
+		"tooltip-format": "CPU: {temperatureC}°C",
+	},
+	"network": {
+		"format": "{ifname}",
+		"format-wifi": "{icon}   {essid}",
+		"format-ethernet": "  {ifname}",
+		"format-disconnected": "Disconnected",
+		"tooltip-format": " {ifname} via {gwaddri}",
+		"tooltip-format-wifi": "  {ifname} @ {essid}\nIP: {ipaddr}\nStrength: {signalStrength}%\nFreq: {frequency}MHz\nUp: {bandwidthUpBits} Down: {bandwidthDownBits}",
+		"tooltip-format-ethernet": " {ifname}\nIP: {ipaddr}\n up: {bandwidthUpBits} down: {bandwidthDownBits}",
+		"tooltip-format-disconnected": "Disconnected",
+		"max-length": 50,
+		"interval": 5,
+		"format-icons": [
+			"󰤯",
+			"󰤟",
+			"󰤢",
+			"󰤥",
+			"󰤨"
+		],
+		"on-click": "~/.config/scripts/wifi/show_wifi_menu.sh"
+	},
+	"battery": {
+		"states": {
+			// "good": 95,
+			"warning": 30,
+			"critical": 15
+		},
+		"format": "{capacity} {icon}",
+		"format-full": "{capacity}% {icon}",
+		"format-charging": "{capacity}% ",
+		"format-plugged": "{capacity}% ",
+		"format-alt": "{time} {icon}",
+		// "format-good": "", // An empty format will hide the module
+		// "format-full": "",
+		"format-icons": [
+			" ",
+			" ",
+			" ",
+			" ",
+			" "
+		]
+	},
+	"custom/power": {
+		"format": "⏻",
+		"exec": "uptime --pretty | sed 's/up //'",
+		"on-click": "~/.config/rofi/powermenu/type-4/powermenu.sh",
+		"interval": 60,
+		"tooltip-format": "Uptime: {}",
+		"menu": "on-click-right",
+		"menu-file": "/home/nati/.config/waybar/modules/power_menu.xml",
+		"menu-actions": {
+			"logout": "hyprctl dispatch exit",
+			"lock": "hyprlock",
+			"kill": "hyprctl kill",
+			"reload": "hyprctl reload && pkill -SIGUSR2 waybar && notify-send -u low -h string:x-dunst-stack-tag:hypr-reload 'Config reloaded'",
+			"reboot": "systemctl reboot",
+			//"suspend": "systemctl suspend",
+			//"hibernate": "systemctl hibernate",
+			"shutdown": "systemctl poweroff",
+		},
+	},
+}
